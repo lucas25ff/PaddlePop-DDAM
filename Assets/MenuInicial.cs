@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//REFIERE A TODA LA INTERFAZ DEL MENU INICIAL
 public class MenuInicial : MonoBehaviour
 {
-    // Sirve para cargar una nueva escena
+    //cargamos la nueva escena
     public void Jugar()
     {
-        // Reemplaza "NombreDeTuSiguienteEscena" con el nombre real de la siguiente escena
+        //asignamos el nombre que en este caso es "JDA"
         SceneManager.LoadScene("JuegoDesarrolloApps");
     }
 
     public void Salir()
     {
-        Debug.Log("Salir...");
+        //aqui detenemos la reproduccion del juego
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
         Application.Quit();
+        #endif
     }
 }
 

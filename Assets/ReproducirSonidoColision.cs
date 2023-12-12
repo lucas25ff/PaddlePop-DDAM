@@ -1,12 +1,13 @@
 using UnityEngine;
-
+//REFIERE AL SONIDO QUE EFECTUA LA PELOTA CUANDO COLISIONA
 public class ReproducirSonidoColision : MonoBehaviour
 {
     public AudioClip sonidoColision;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verificar si la colisión es con una paleta
+        /*aqui preguntamos si la pelota choca con alguna de las paletas, esto se hace mediante las etiquetas asignadas en el inspector. 
+        Si esto ocurre se reproduce el sonido asignado*/
         if (collision.gameObject.CompareTag("Paddle1") || collision.gameObject.CompareTag("Paddle2"))
         {
             ReproducirSonido();
@@ -15,16 +16,16 @@ public class ReproducirSonidoColision : MonoBehaviour
 
     void ReproducirSonido()
     {
-        // Verifica si el objeto con el que colisionamos tiene un AudioSource
+        //aqui verificamos si el objeto con el que choca tiene asignado el audiosource
         AudioSource audioSource = GetComponent<AudioSource>();
 
-        // Si no tiene un AudioSource, lo agregamos
+        //en caso de que de como nulo, es decir que no tenga le agregamos
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        // Asignamos el sonido al AudioSource y lo reproducimos
+        //luego de asignarlo, lo reproducimos
         audioSource.clip = sonidoColision;
         audioSource.Play();
     }

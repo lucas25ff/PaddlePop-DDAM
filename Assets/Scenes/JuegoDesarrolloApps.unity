@@ -2313,7 +2313,7 @@ GameObject:
   - component: {fileID: 1812733098}
   - component: {fileID: 1812733097}
   m_Layer: 0
-  m_Name: fondaso
+  m_Name: fondoJuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
